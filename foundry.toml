@@ -2,5 +2,16 @@
 src = "src"
 out = "out"
 libs = ["lib"]
+optimizer_runs = 100
+optimizer = true
+
+[rpc_endpoints]
+evm_version = "shanghai"
+bartio = "${BARTIO_RPC_URL}"
+
+
+[etherscan]
+bartio = { key = "verifyContract", chain = 80084, url = "https://api.routescan.io/v2/network/testnet/evm/80084/etherscan"}
+
 
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
