@@ -1,66 +1,17 @@
-## Foundry
+### Script to check the evm version issue with oogabooga team
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+The script tries to make a swap using a simple Swapper contract deployed on Bartio. The swapper contract is deployed in solidity version 0.8.19
 
-Foundry consists of:
+The main issue is that the script fails in foundry when using EVM version shanghai. But works fine with evm version cancun.
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+### Note - FFI is enabled to run a CURL command using the bash shell and get OogaBooga API quote dynamically. [works only on linux and macOS].
 
-## Documentation
-
-https://book.getfoundry.sh/
-
-## Usage
-
-### Build
-
-```shell
-$ forge build
+### Testing the script
+The following command runs the script in evm version shanghai and fails.
 ```
+forge script script/OBSwap.s.sol --rpc-url bartio --broadcast --ffi
+forge script script/OBSwap.s.sol --rpc-url bartio --broadcast --ffi --evm-version shanghai
 
-### Test
-
-```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
+The following command runs the script in evm version cancun and works fine.
+forge script script/OBSwap.s.sol --rpc-url bartio --broadcast --ffi --evm-version cancun
 ```
