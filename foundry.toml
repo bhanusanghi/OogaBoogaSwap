@@ -5,13 +5,20 @@ libs = ["lib"]
 optimizer_runs = 100
 optimizer = true
 
+remappings = [
+    "@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts",
+    "surl/=lib/surl/src",
+]
+
+
 [rpc_endpoints]
 evm_version = "shanghai"
-bartio = "${BARTIO_RPC_URL}"
+bartio = "https://bartio.rpc.berachain.com/"
+blockExplorer = "https://bartio.beratrail.io/"
 
 
 [etherscan]
-bartio = { key = "verifyContract", chain = 80084, url = "https://api.routescan.io/v2/network/testnet/evm/80084/etherscan"}
+bartio = { key = "verifyContract", chain = 80084, url = "https://api.routescan.io/v2/network/testnet/evm/80084/etherscan" }
 
 
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
